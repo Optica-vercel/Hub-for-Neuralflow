@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Neural Flow Hub - High-Performance Aesthetics for Bold Brands.">
+    <title>Neural Flow Hub | Premium Performance</title>
+    
+    <!-- Sophisticated Font Pairing -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-deep: #080d0c;
+            --bg-card: #111b18;
+            --text-main: #e0e2db;
+            --text-muted: #8b9485;
+            --accent-gold: #c5a059;
+            --accent-olive: #4a5741;
+            --border-gold: rgba(197, 160, 89, 0.25);
+            --transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- NAVIGATION HEADER --- */
+        .site-header {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 30px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: linear-gradient(to bottom, rgba(8, 13, 12, 0.8), transparent);
+            backdrop-filter: blur(5px);
+        }
+
+        .header-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            letter-spacing: 0.1em;
+            color: var(--text-main);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        /* Logo image styling */
+.logo-img {
+    width: 34px;
+    height: 34px;
+    object-fit: contain;
+    filter: brightness(1.1) contrast(1.1);
+    transition: var(--transition);
+}
+
+/* Subtle hover animation */
+.header-logo:hover .logo-img {
+    transform: rotate(8deg) scale(1.08);
+}
+
+/* Align text + logo nicely */
+.header-logo span {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    letter-spacing: 0.1em;
+}
+
+        .logo-symbol {
+            width: 30px; height: 30px;
+            border: 1px solid var(--accent-gold);
+            position: relative;
+            
+        }
+
+        .header-cta {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--accent-gold);
+            text-decoration: none;
+            border-bottom: 1px solid var(--accent-gold);
+            transition: var(--transition);
+        }
+        .header-cta:hover { color: white; border-color: white; }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+            border-bottom: 1px solid var(--border-gold);
+        }
+
+        .hero-bg {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(8, 13, 12, 0.5), rgba(8, 13, 12, 1)), 
+                        url('image/hero.jpg');
+            background-size: cover; background-position: center;
+            z-index: -1; transform: scale(1.1);
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 8vw, 5.5rem);
+            margin-bottom: 20px; opacity: 0; transform: translateY(30px);
+        }
+
+        .hero p {
+            color: var(--text-muted); letter-spacing: 0.5em; text-transform: uppercase;
+            font-size: 0.8rem; opacity: 0;
+        }
+
+        /* --- DATA POINTS SECTION --- */
+        .data-section {
+            position: relative;
+            padding: 150px 20px;
+            margin: 60px 20px;
+            border: 1px solid var(--border-gold);
+            background: linear-gradient(rgba(13, 22, 20, 0.8), rgba(13, 22, 20, 0.8)), 
+                        url('https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&q=80&w=1500');
+            background-size: cover; background-position: center;
+            background-attachment: fixed;
+            text-align: center;
+        }
+
+        .data-grid {
+            max-width: 1200px; margin: 0 auto;
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px;
+        }
+
+        .data-card h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--text-main); margin-bottom: 10px;
+        }
+
+        .data-card span {
+            font-size: 0.75rem; color: var(--accent-gold);
+            text-transform: uppercase; letter-spacing: 0.25em;
+        }
+
+        /* --- GALLERY SECTION --- */
+        .gallery-container {
+            max-width: 1200px; margin: 100px auto; padding: 0 20px;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 50px;
+        }
+
+        .project-card {
+            background: var(--bg-card); padding: 25px;
+            border: 1px solid rgba(255,255,255,0.03);
+            text-decoration: none; transition: var(--transition);
+        }
+        .project-card:hover { transform: translateY(-15px); border-color: var(--accent-olive); }
+
+        .img-wrap { width: 100%; aspect-ratio: 16/10; overflow: hidden; margin-bottom: 25px; }
+        .img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: 1.5s ease; filter: grayscale(0.4); }
+        .project-card:hover img { transform: scale(1.1); filter: grayscale(0); }
+
+        /* --- CALL TO ACTION --- */
+        .cta-box {
+            position: relative;
+            margin: 100px 20px;
+            padding: 180px 20px;
+            text-align: center;
+            background: linear-gradient(to top, rgba(8, 13, 12, 1), rgba(8, 13, 12, 0.6)), 
+                        url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&q=80&w=1800');
+            background-size: cover; background-position: center;
+            border: 1px solid var(--border-gold);
+            /* Framing detail */
+            outline: 1px solid var(--border-gold);
+            outline-offset: 15px;
+        }
+
+        .cta-box h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.2rem, 6vw, 4.5rem);
+            margin-bottom: 40px;
+        }
+
+        .btn-premium {
+            display: inline-block;
+            padding: 24px 60px;
+            background: var(--accent-gold);
+            color: var(--bg-deep);
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            font-size: 0.8rem;
+            transition: var(--transition);
+        }
+
+        .btn-premium:hover {
+            background: transparent; color: var(--accent-gold);
+            box-shadow: 0 0 40px rgba(197, 160, 89, 0.4);
+            border: 1px solid var(--accent-gold);
+        }
+         .proof-section {
+        max-width: 1200px;
+        margin: 100px auto;
+        padding: 0 20px;
+    }
+
+    .proof-header {
+        margin-bottom: 60px;
+        border-left: 2px solid var(--accent-gold);
+        padding-left: 20px;
+    }
+
+    .proof-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 60px;
+        align-items: center;
+        margin-bottom: 80px;
+    }
+
+    .screenshot-frame {
+        background: var(--bg-card);
+        padding: 10px;
+        border: 1px solid var(--border-gold);
+        position: relative;
+    }
+
+    .screenshot-frame img {
+        width: 100%;
+        display: block;
+        filter: grayscale(0.2) contrast(1.1);
+    }
+
+    .review-content {
+        padding-right: 20px;
+    }
+
+    .review-text {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.5rem;
+        line-height: 1.4;
+        margin-bottom: 20px;
+        font-style: italic;
+    }
+
+    .reviewer-name {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.3em;
+        color: var(--accent-gold);
+    }
+
+    /* FOOTER */
+    .site-footer {
+        padding: 80px 50px 40px;
+        border-top: 1px solid rgba(197, 160, 89, 0.1);
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+    }
+
+    .footer-left .logo-img {
+        width: 25px;
+        margin-bottom: 20px;
+    }
+
+    .footer-credits {
+        font-size: 0.65rem;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+    }
+
+    .footer-links {
+        display: flex;
+        gap: 30px;
+        list-style: none;
+    }
+
+    .footer-links a {
+        color: var(--text-main);
+        text-decoration: none;
+        font-size: 0.75rem;
+        transition: var(--transition);
+    }
+
+    .footer-links a:hover {
+        color: var(--accent-gold);
+    }
+
+    .status-indicator {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.65rem;
+        color: var(--text-muted);
+        margin-bottom: 10px;
+    }
+
+    .dot {
+        width: 6px;
+        height: 6px;
+        background: #4caf50;
+        border-radius: 50%;
+        box-shadow: 0 0 10px #4caf50;
+    }
+
+    @media (max-width: 900px) {
+        .proof-grid { grid-template-columns: 1fr; gap: 30px; }
+        .site-footer { flex-direction: column; align-items: flex-start; gap: 40px; }
+    }
+
+        /* --- REVEAL LOGIC --- */
+        .reveal { opacity: 0; transform: translateY(40px); transition: var(--transition); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 900px) {
+            .gallery-container, .data-grid { grid-template-columns: 1fr; }
+            .site-header { padding: 20px; }
+            .cta-box { outline: none; padding: 100px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER SECTION -->
+    <nav class="site-header">
+       <a href="#" class="header-logo">
+    <img src="image/logs.png" alt="Neural Flow Logo" class="logo-img">
+    <span>NEURAL FLOW HUB</span>
+</a>
+        <a href=" https://www.linkedin.com/in/neural-flow-a172b8384" class="header-cta">Inquire</a>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="hero">
+        <div class="hero-bg" id="parallaxHero"></div>
+        <h1 id="h1Reveal">Pure Code. Pure Flow.</h1>
+        <p id="pReveal">Specializing in 90+ PageSpeed Aesthetics</p>
+    </header>
+
+    <!-- GALLERY SECTION -->
+    <main class="gallery-container">
+       <div class="project-card reveal">
+
+    <!-- Clickable Image -->
+    <a href="https://scaling-octo-invention.vercel.app/" target="_blank" class="img-link">
+        <div class="img-wrap">
+            <img src="image/pic2.PNG" alt="Work 2">
+        </div>
+    </a>
+    <span class="project-tag">Azure | Cinematic / 97 Score</span>
+</div>
+        <div class="project-card reveal">
+
+    <!-- Clickable Image -->
+    <a href="https://scaling-octo-invention.vercel.app/" target="_blank" class="img-link">
+        <div class="img-wrap">
+            <img src="image/arch.PNG" alt="Work 2">
+        </div>
+    </a>
+
+    <!-- Removed title completely -->
+    
+    <span class="project-tag">Archive | Mystic / 95+ Score</span>
+</div>
+    </main>
+
+    <!-- DATA POINT SECTION -->
+    <section class="data-section reveal">
+        <div class="data-grid">
+            <div class="data-card">
+                <h2>0.8s</h2>
+                <span>Avg. Load Time</span>
+            </div>
+            <div class="data-card">
+                <h2>100%</h2>
+                <span>SEO Mastery</span>
+            </div>
+            <div class="data-card">
+                <h2>92%</h2>
+                <span>Accessibility</span>
+            </div>
+        </div>
+    </section>
+     <!-- PERFORMANCE BENCHMARKS & REVIEWS -->
+    <section class="proof-section">
+        <div class="proof-header reveal">
+            <p style="color: var(--accent-gold); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.2em;">Validated Excellence</p>
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem;">The Proof is in the Protocol.</h2>
+        </div>
+
+        <!-- Entry 1 -->
+        <div class="proof-grid reveal">
+            <div class="screenshot-frame">
+                <!-- Replace with your Google PageSpeed Screenshot -->
+                <img src="image/review.PNG" alt="PageSpeed Insights">
+            </div>
+            <div class="review-content">
+                <p class="review-text">"The speed optimization wasn't just a metric; it transformed our conversion rates overnight. Neural Flow builds differently."</p>
+                <p class="reviewer-name">— Aris Thorne | CEO Azure Media</p>
+            </div>
+        </div>
+
+        <!-- Entry 2 -->
+        <div class="proof-grid reveal" style="direction: rtl;">
+            <div class="screenshot-frame" style="direction: ltr;">
+                <img src="image/rev2.PNG" alt="Core Web Vitals">
+            </div>
+            <div class="review-content" style="direction: ltr;">
+                <p class="review-text">"Minimalistic aesthetics meets maximum performance. A rare combination in today's bloated web landscape."</p>
+                <p class="reviewer-name">— Studio Archive Design</p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- CALL TO ACTION SECTION -->
+    <section class="cta-box reveal">
+        <h2>Radical Results.<br>Elegant Foundations.</h2>
+        <a href="mailto:0067678899c@gmail.com?subject=New Vibe Project" class="btn-premium">Start a Project</a>
+    </section>
+    <footer class="site-footer">
+        <div class="footer-left">
+            <img src="image/logs.png" alt="Logo" class="logo-img">
+            <div class="status-indicator">
+                <span class="dot"></span> Available for Q3 2024 Projects
+            </div>
+            <p class="footer-credits">© 2024 Neural Flow Hub. All Rights Reserved.</p>
+        </div>
+        
+        <div class="footer-right">
+            <ul class="footer-links">
+                <li><a href="https://www.linkedin.com/in/neural-flow-a172b8384">LinkedIn</a></li>
+                <li><a href="mailto:0067678899c@gmail.com">Contact</a></li>
+                <li><a href="#">Privacy</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script>
+        // 1. Scroll Reveal Observer
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+        // 2. Hero Initial Animation
+        window.addEventListener('DOMContentLoaded', () => {
+            const h1 = document.getElementById('h1Reveal');
+            const p = document.getElementById('pReveal');
+            
+            setTimeout(() => {
+                h1.style.opacity = '1';
+                h1.style.transform = 'translateY(0)';
+            }, 300);
+            
+            setTimeout(() => {
+                p.style.opacity = '1';
+                p.style.transform = 'translateY(0)';
+            }, 600);
+        });
+
+        // 3. Smooth Parallax Effect
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const heroBg = document.getElementById('parallaxHero');
+            heroBg.style.transform = `scale(1.1) translateY(${scrolled * 0.4}px)`;
+        });
+    </script>
+</body>
+</html>
