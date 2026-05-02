@@ -1,518 +1,362 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Neural Flow Hub - High-Performance Aesthetics for Bold Brands.">
-    <title>Neural Flow Hub | Premium Performance</title>
-    
-    <!-- Sophisticated Font Pairing -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-
-    <style>
-        :root {
-            --bg-deep: #080d0c;
-            --bg-card: #111b18;
-            --text-main: #e0e2db;
-            --text-muted: #8b9485;
-            --accent-gold: #c5a059;
-            --accent-olive: #4a5741;
-            --border-gold: rgba(197, 160, 89, 0.25);
-            --transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-deep);
-            color: var(--text-main);
-            line-height: 1.6;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* --- NAVIGATION HEADER --- */
-        .site-header {
-            position: fixed;
-            top: 0; width: 100%;
-            padding: 30px 50px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            background: linear-gradient(to bottom, rgba(8, 13, 12, 0.8), transparent);
-            backdrop-filter: blur(5px);
-        }
-
-        .header-logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
-            letter-spacing: 0.1em;
-            color: var(--text-main);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        /* Logo image styling */
-.logo-img {
-    width: 34px;
-    height: 34px;
-    object-fit: contain;
-    filter: brightness(1.1) contrast(1.1);
-    transition: var(--transition);
-}
-
-/* Subtle hover animation */
-.header-logo:hover .logo-img {
-    transform: rotate(8deg) scale(1.08);
-}
-
-/* Align text + logo nicely */
-.header-logo span {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.4rem;
-    letter-spacing: 0.1em;
-}
-
-        .logo-symbol {
-            width: 30px; height: 30px;
-            border: 1px solid var(--accent-gold);
-            position: relative;
-            
-        }
-
-        .header-cta {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            color: var(--accent-gold);
-            text-decoration: none;
-            border-bottom: 1px solid var(--accent-gold);
-            transition: var(--transition);
-        }
-        .header-cta:hover { color: white; border-color: white; }
-
-        /* --- HERO SECTION --- */
-        .hero {
-            position: relative;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            overflow: hidden;
-            border-bottom: 1px solid var(--border-gold);
-        }
-
-        .hero-bg {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(rgba(8, 13, 12, 0.5), rgba(8, 13, 12, 1)), 
-                        url('image/hero.jpg');
-            background-size: cover; background-position: center;
-            z-index: -1; transform: scale(1.1);
-        }
-
-        .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2.5rem, 8vw, 5.5rem);
-            margin-bottom: 20px; opacity: 0; transform: translateY(30px);
-        }
-
-        .hero p {
-            color: var(--text-muted); letter-spacing: 0.5em; text-transform: uppercase;
-            font-size: 0.8rem; opacity: 0;
-        }
-
-        /* --- DATA POINTS SECTION --- */
-        .data-section {
-            position: relative;
-            padding: 150px 20px;
-            margin: 60px 20px;
-            border: 1px solid var(--border-gold);
-            background: linear-gradient(rgba(13, 22, 20, 0.8), rgba(13, 22, 20, 0.8)), 
-                        url('https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&q=80&w=1500');
-            background-size: cover; background-position: center;
-            background-attachment: fixed;
-            text-align: center;
-        }
-
-        .data-grid {
-            max-width: 1200px; margin: 0 auto;
-            display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px;
-        }
-
-        .data-card h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            color: var(--text-main); margin-bottom: 10px;
-        }
-
-        .data-card span {
-            font-size: 0.75rem; color: var(--accent-gold);
-            text-transform: uppercase; letter-spacing: 0.25em;
-        }
-
-        /* --- GALLERY SECTION --- */
-        .gallery-container {
-            max-width: 1200px; margin: 100px auto; padding: 0 20px;
-            display: grid; grid-template-columns: 1fr 1fr; gap: 50px;
-        }
-
-        .project-card {
-            background: var(--bg-card); padding: 25px;
-            border: 1px solid rgba(255,255,255,0.03);
-            text-decoration: none; transition: var(--transition);
-        }
-        .project-card:hover { transform: translateY(-15px); border-color: var(--accent-olive); }
-
-        .img-wrap { width: 100%; aspect-ratio: 16/10; overflow: hidden; margin-bottom: 25px; }
-        .img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: 1.5s ease; filter: grayscale(0.4); }
-        .project-card:hover img { transform: scale(1.1); filter: grayscale(0); }
-
-        /* --- CALL TO ACTION --- */
-        .cta-box {
-            position: relative;
-            margin: 100px 20px;
-            padding: 180px 20px;
-            text-align: center;
-            background: linear-gradient(to top, rgba(8, 13, 12, 1), rgba(8, 13, 12, 0.6)), 
-                        url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&q=80&w=1800');
-            background-size: cover; background-position: center;
-            border: 1px solid var(--border-gold);
-            /* Framing detail */
-            outline: 1px solid var(--border-gold);
-            outline-offset: 15px;
-        }
-
-        .cta-box h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2.2rem, 6vw, 4.5rem);
-            margin-bottom: 40px;
-        }
-
-        .btn-premium {
-            display: inline-block;
-            padding: 24px 60px;
-            background: var(--accent-gold);
-            color: var(--bg-deep);
-            text-decoration: none;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.3em;
-            font-size: 0.8rem;
-            transition: var(--transition);
-        }
-
-        .btn-premium:hover {
-            background: transparent; color: var(--accent-gold);
-            box-shadow: 0 0 40px rgba(197, 160, 89, 0.4);
-            border: 1px solid var(--accent-gold);
-        }
-         .proof-section {
-        max-width: 1200px;
-        margin: 100px auto;
-        padding: 0 20px;
-    }
-
-    .proof-header {
-        margin-bottom: 60px;
-        border-left: 2px solid var(--accent-gold);
-        padding-left: 20px;
-    }
-
-    .proof-grid {
-        display: grid;
-        grid-template-columns: 1.2fr 0.8fr;
-        gap: 60px;
-        align-items: center;
-        margin-bottom: 80px;
-    }
-
-    .screenshot-frame {
-        background: var(--bg-card);
-        padding: 10px;
-        border: 1px solid var(--border-gold);
-        position: relative;
-    }
-
-    .screenshot-frame img {
-        width: 100%;
-        display: block;
-        filter: grayscale(0.2) contrast(1.1);
-    }
-
-    .review-content {
-        padding-right: 20px;
-    }
-
-    .review-text {
-        font-family: 'Playfair Display', serif;
-        font-size: 1.5rem;
-        line-height: 1.4;
-        margin-bottom: 20px;
-        font-style: italic;
-    }
-
-    .reviewer-name {
-        font-size: 0.7rem;
-        text-transform: uppercase;
-        letter-spacing: 0.3em;
-        color: var(--accent-gold);
-    }
-
-    /* FOOTER */
-    .site-footer {
-        padding: 80px 50px 40px;
-        border-top: 1px solid rgba(197, 160, 89, 0.1);
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
-    }
-
-    .footer-left .logo-img {
-        width: 25px;
-        margin-bottom: 20px;
-    }
-
-    .footer-credits {
-        font-size: 0.65rem;
-        color: var(--text-muted);
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-    }
-
-    .footer-links {
-        display: flex;
-        gap: 30px;
-        list-style: none;
-    }
-
-    .footer-links a {
-        color: var(--text-main);
-        text-decoration: none;
-        font-size: 0.75rem;
-        transition: var(--transition);
-    }
-
-    .footer-links a:hover {
-        color: var(--accent-gold);
-    }
-
-    .status-indicator {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        font-size: 0.65rem;
-        color: var(--text-muted);
-        margin-bottom: 10px;
-    }
-
-    .dot {
-        width: 6px;
-        height: 6px;
-        background: #4caf50;
-        border-radius: 50%;
-        box-shadow: 0 0 10px #4caf50;
-    }
-
-    @media (max-width: 900px) {
-        .proof-grid { grid-template-columns: 1fr; gap: 30px; }
-        .site-footer { flex-direction: column; align-items: flex-start; gap: 40px; }
-    }
-
-        /* --- REVEAL LOGIC --- */
-        .reveal { opacity: 0; transform: translateY(40px); transition: var(--transition); }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-
-        /* --- RESPONSIVE --- */
-        @media (max-width: 900px) {
-            .gallery-container, .data-grid { grid-template-columns: 1fr; }
-            .site-header { padding: 20px; }
-            .cta-box { outline: none; padding: 100px 20px; }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neural Flow Hub — Pure Code. Pure Flow.</title>
+  <meta name="description" content="Neural Flow Hub is a premium web design studio specializing in 90+ PageSpeed aesthetics. Pure Code. Pure Flow." />
+  <meta name="keywords" content="web design, performance, PageSpeed, portfolio, Neural Flow Hub" />
+  <meta property="og:title" content="Neural Flow Hub — Pure Code. Pure Flow." />
+  <meta property="og:description" content="Premium web design studio. Cinematic, fast, unforgettable." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-    <!-- HEADER SECTION -->
-    <nav class="site-header">
-       <a href="#" class="header-logo">
-    <img src="image/logs.png" alt="Neural Flow Logo" class="logo-img">
-    <span>NEURAL FLOW HUB</span>
-</a>
-        <a href=" https://www.linkedin.com/in/neural-flow-a172b8384" class="header-cta">Inquire</a>
-    </nav>
+  <!-- CUSTOM CURSOR -->
+  <div id="cursor" class="cursor"></div>
+  <div id="cursor-trail" class="cursor-trail"></div>
 
-    <!-- HERO SECTION -->
-    <header class="hero">
-        <div class="hero-bg" id="parallaxHero"></div>
-        <h1 id="h1Reveal">Pure Code. Pure Flow.</h1>
-        <p id="pReveal">Specializing in 90+ PageSpeed Aesthetics</p>
-    </header>
+  <!-- NOISE OVERLAY -->
+  <div class="noise-overlay" aria-hidden="true"></div>
 
-    <!-- GALLERY SECTION -->
-    <main class="gallery-container">
+  <!-- ═══════════════════════════════════════════════════════════
+       NAVIGATION
+  ═══════════════════════════════════════════════════════════ -->
+  <nav id="navbar" class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo" aria-label="Neural Flow Hub Home">
+        <span class="logo-text">NFH.</span>
+      </a>
+      <ul class="nav-links" role="list">
+        <li><a href="#work" class="nav-link">Work</a></li>
+        <li><a href="#proof" class="nav-link">Proof</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+        <li class="nav-cta-wrapper">
+          <a href="mailto:0067678899c@gmail.com?subject=New%20Vibe%20Project" class="nav-cta" id="nav-hire-btn">
+            Hire Us
+          </a>
+        </li>
+      </ul>
+      <button class="nav-hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
 
-        <!-- NEW: Dentiss — shown first -->
-        <div class="project-card reveal">
-            <a href="https://dentissrrrr.vercel.app/" target="_blank" class="img-link">
-                <div class="img-wrap">
-                    <img src="image/dentisstttt.PNG" alt="Dentiss Project">
-                </div>
-            </a>
-            <span class="project-tag">Dentiss | Clinic / Latest</span>
-        </div>
+  <!-- ═══════════════════════════════════════════════════════════
+       SECTION 1 — HERO
+  ═══════════════════════════════════════════════════════════ -->
+  <section id="hero" class="hero" aria-label="Hero section">
+    <!-- Animated background blobs -->
+    <div class="hero-bg" aria-hidden="true">
+      <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop" alt="" class="hero-bg-img">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
+      <div class="blob blob-4"></div>
+      <div class="scan-lines"></div>
+    </div>
 
-        <div class="project-card reveal">
-            <a href="https://aura-modern-archi.vercel.app/" target="_blank" class="img-link">
-                <div class="img-wrap">
-                    <img src="image/arua.PNG" alt="Work 3 - Aura">
-                </div>
-            </a>
-            <span class="project-tag">Aura | Vibe Coded / 98 Score</span>
-        </div>
+    <div class="hero-content">
+      <div class="hero-eyebrow reveal-up">
+        <span class="eyebrow-line"></span>
+        <span class="eyebrow-text">Premium Web Design Studio</span>
+        <span class="eyebrow-line"></span>
+      </div>
 
-        <div class="project-card reveal">
-            <a href="https://scaling-octo-invention.vercel.app/" target="_blank" class="img-link">
-                <div class="img-wrap">
-                    <img src="image/pic2.PNG" alt="Work 2">
-                </div>
-            </a>
-            <span class="project-tag">Azure | Cinematic / 97 Score</span>
-        </div>
+      <h1 class="hero-title reveal-up delay-1">
+        <span class="title-line line-1">NEURAL</span>
+        <span class="title-line line-2">FLOW</span>
+        <span class="title-line line-3">HUB</span>
+        <span class="title-glow-bar" aria-hidden="true"></span>
+      </h1>
 
-        <div class="project-card reveal">
-            <a href="https://scaling-octo-invention.vercel.app/" target="_blank" class="img-link">
-                <div class="img-wrap">
-                    <img src="image/arch.PNG" alt="Work 2">
-                </div>
-            </a>
-            <span class="project-tag">Archive | Mystic / 95+ Score</span>
-        </div>
+      <p class="hero-tagline reveal-up delay-2">Pure Code. <span class="tagline-accent">Pure Flow.</span></p>
+      <p class="hero-sub reveal-up delay-3">Specializing in <span class="hero-badge">90+ PageSpeed</span> Aesthetics</p>
 
-    </main>
+      <div class="hero-actions reveal-up delay-4">
+        <a href="#work" class="btn-primary" id="hero-view-work">
+          <span>VIEW WORK</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M8 2v12M2 8l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a href="https://www.linkedin.com/in/neural-flow-a172b8384" target="_blank" rel="noopener" class="btn-ghost" id="hero-linkedin">
+          LinkedIn ↗
+        </a>
+      </div>
+    </div>
 
-    <!-- DATA POINT SECTION -->
-    <section class="data-section reveal">
-        <div class="data-grid">
-            <div class="data-card">
-                <h2>0.8s</h2>
-                <span>Avg. Load Time</span>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       SECTION 2 — STATS BAR
+  ═══════════════════════════════════════════════════════════ -->
+  <section id="stats" class="stats-bar" aria-label="Key statistics">
+    <div class="stats-inner">
+      <div class="stat-item">
+        <span class="stat-num" data-target="0.8" data-suffix="s" data-decimal="true" id="stat-load">0.0s</span>
+        <span class="stat-label">Avg. Load Time</span>
+      </div>
+      <div class="stat-divider" aria-hidden="true"></div>
+      <div class="stat-item">
+        <span class="stat-num" data-target="100" data-suffix="%" id="stat-seo">0%</span>
+        <span class="stat-label">SEO Mastery</span>
+      </div>
+      <div class="stat-divider" aria-hidden="true"></div>
+      <div class="stat-item">
+        <span class="stat-num" data-target="92" data-suffix="%" id="stat-access">0%</span>
+        <span class="stat-label">Accessibility</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       SECTION 3 — PROJECT SHOWCASE
+  ═══════════════════════════════════════════════════════════ -->
+  <section id="work" class="projects-section" aria-label="Project showcase">
+    <div class="section-header">
+      <span class="section-label reveal-up">Selected Work</span>
+      <h2 class="section-title reveal-up delay-1">THE WORK</h2>
+      <div class="section-underline reveal-up delay-2" aria-hidden="true"></div>
+    </div>
+
+    <div class="projects-grid">
+
+      <!-- Project 1 — Dentiss (large) -->
+      <article class="project-card card-large reveal-scale" id="proj-dentiss">
+        <a href="https://dentissrrrr.vercel.app/" target="_blank" rel="noopener" class="card-link" aria-label="View Dentiss project">
+          <div class="card-img-wrap">
+            <img src="image/dentisstttt.PNG" alt="Dentiss Clinic website screenshot" loading="lazy" class="card-img" />
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-info">
+            <span class="card-category">Clinic / Latest</span>
+            <h3 class="card-name">Dentiss</h3>
+            <p class="card-desc">Premium dental clinic experience with cinematic clarity.</p>
+            <div class="card-score">
+              <span class="score-badge" style="--score-color: #00F5FF;">✦ Latest</span>
+              <span class="card-arrow">→</span>
             </div>
-            <div class="data-card">
-                <h2>100%</h2>
-                <span>SEO Mastery</span>
+          </div>
+        </a>
+      </article>
+
+      <!-- Project 2 — Aura (small) -->
+      <article class="project-card card-small reveal-scale delay-1" id="proj-aura">
+        <a href="https://aura-modern-archi.vercel.app/" target="_blank" rel="noopener" class="card-link" aria-label="View Aura project">
+          <div class="card-img-wrap">
+            <img src="image/arua.PNG" alt="Aura Architecture website screenshot" loading="lazy" class="card-img" />
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-info">
+            <span class="card-category">Vibe Coded</span>
+            <h3 class="card-name">Aura</h3>
+            <p class="card-desc">Architecture meets emotion — built to feel alive.</p>
+            <div class="card-score">
+              <span class="score-badge" style="--score-color: #FF2D78;">✦ 98 Score</span>
+              <span class="card-arrow">→</span>
             </div>
-            <div class="data-card">
-                <h2>92%</h2>
-                <span>Accessibility</span>
+          </div>
+        </a>
+      </article>
+
+      <!-- Project 3 — Azure (small) -->
+      <article class="project-card card-small reveal-scale delay-2" id="proj-azure">
+        <a href="https://scaling-octo-invention.vercel.app/" target="_blank" rel="noopener" class="card-link" aria-label="View Azure project">
+          <div class="card-img-wrap">
+            <img src="image/pic2.PNG" alt="Azure Cinematic website screenshot" loading="lazy" class="card-img" />
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-info">
+            <span class="card-category">Cinematic</span>
+            <h3 class="card-name">Azure</h3>
+            <p class="card-desc">Visual storytelling at the speed of light.</p>
+            <div class="card-score">
+              <span class="score-badge" style="--score-color: #FF4D2E;">✦ 97 Score</span>
+              <span class="card-arrow">→</span>
             </div>
+          </div>
+        </a>
+      </article>
+
+      <!-- Project 4 — Archive (large) -->
+      <article class="project-card card-large reveal-scale delay-3" id="proj-archive">
+        <a href="https://scaling-octo-invention.vercel.app/" target="_blank" rel="noopener" class="card-link" aria-label="View Archive project">
+          <div class="card-img-wrap">
+            <img src="image/arch.PNG" alt="Archive Mystic website screenshot" loading="lazy" class="card-img" />
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-info">
+            <span class="card-category">Mystic</span>
+            <h3 class="card-name">Archive</h3>
+            <p class="card-desc">Where depth of craft meets the art of mystery.</p>
+            <div class="card-score">
+              <span class="score-badge" style="--score-color: #FFD447;">✦ 95+ Score</span>
+              <span class="card-arrow">→</span>
+            </div>
+          </div>
+        </a>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       SECTION 4 — PROOF / TESTIMONIALS
+  ═══════════════════════════════════════════════════════════ -->
+  <section id="proof" class="proof-section" aria-label="Client testimonials">
+    <div class="proof-bg" aria-hidden="true">
+      <div class="proof-glow-1"></div>
+      <div class="proof-glow-2"></div>
+    </div>
+
+    <div class="section-header">
+      <span class="section-label reveal-up">Client Proof</span>
+      <h2 class="section-title reveal-up delay-1">PROOF IN THE CODE</h2>
+      <div class="section-underline reveal-up delay-2" aria-hidden="true"></div>
+    </div>
+
+    <div class="testimonials-grid">
+
+      <!-- Testimonial 1 -->
+      <article class="testimonial-card reveal-up" id="test-aris" style="--card-accent: #00F5FF;">
+        <div class="test-screenshot-wrap">
+          <img src="image/review.PNG" alt="Review screenshot from Aris Thorne" loading="lazy" class="test-screenshot" />
+          <div class="test-screenshot-overlay"></div>
         </div>
-    </section>
-     <!-- PERFORMANCE BENCHMARKS & REVIEWS -->
-    <section class="proof-section">
-        <div class="proof-header reveal">
-            <p style="color: var(--accent-gold); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.2em;">Validated Excellence</p>
-            <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem;">The Proof is in the Protocol.</h2>
+        <div class="test-body">
+          <div class="test-quote-mark" aria-hidden="true">"</div>
+          <blockquote>
+            <p class="test-quote">The speed optimization wasn't just a metric; it transformed our conversion rates overnight. Neural Flow builds differently.</p>
+            <footer class="test-attribution">
+              <span class="test-dash">—</span>
+              <cite>
+                <span class="test-name">Aris Thorne</span>
+                <span class="test-role">CEO, Azure Media</span>
+              </cite>
+            </footer>
+          </blockquote>
         </div>
+      </article>
 
-        <!-- Entry 1 -->
-        <div class="proof-grid reveal">
-            <div class="screenshot-frame">
-                <!-- Replace with your Google PageSpeed Screenshot -->
-                <img src="image/review.PNG" alt="PageSpeed Insights">
-            </div>
-            <div class="review-content">
-                <p class="review-text">"The speed optimization wasn't just a metric; it transformed our conversion rates overnight. Neural Flow builds differently."</p>
-                <p class="reviewer-name">— Aris Thorne | CEO Azure Media</p>
-            </div>
+      <!-- Testimonial 2 -->
+      <article class="testimonial-card reveal-up delay-1" id="test-archive" style="--card-accent: #FFD447;">
+        <div class="test-screenshot-wrap">
+          <img src="image/rev2.PNG" alt="Review screenshot from Studio Archive" loading="lazy" class="test-screenshot" />
+          <div class="test-screenshot-overlay"></div>
         </div>
-
-        <!-- Entry 2 -->
-        <div class="proof-grid reveal" style="direction: rtl;">
-            <div class="screenshot-frame" style="direction: ltr;">
-                <img src="image/rev2.PNG" alt="Core Web Vitals">
-            </div>
-            <div class="review-content" style="direction: ltr;">
-                <p class="review-text">"Minimalistic aesthetics meets maximum performance. A rare combination in today's bloated web landscape."</p>
-                <p class="reviewer-name">— Studio Archive Design</p>
-            </div>
+        <div class="test-body">
+          <div class="test-quote-mark" aria-hidden="true">"</div>
+          <blockquote>
+            <p class="test-quote">Minimalistic aesthetics meets maximum performance. A rare combination in today's bloated web landscape.</p>
+            <footer class="test-attribution">
+              <span class="test-dash">—</span>
+              <cite>
+                <span class="test-name">Studio Archive</span>
+                <span class="test-role">Design Collective</span>
+              </cite>
+            </footer>
+          </blockquote>
         </div>
-        <div class="proof-grid reveal">
-            <div class="screenshot-frame">
-                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800" alt="PageSpeed Insights Aura">
-            </div>
-            <div class="review-content">
-                <p class="review-text">"The 'Vibe Coded' approach bridged our Trust Gap immediately. Flawless animations and it loads in the blink of an eye."</p>
-                <p class="reviewer-name">— David | Founder, Aura Architecture</p>
-            </div>
+      </article>
+
+      <!-- Testimonial 3 -->
+      <article class="testimonial-card reveal-up delay-2" id="test-david" style="--card-accent: #FF2D78;">
+        <div class="test-screenshot-wrap">
+          <div class="test-placeholder-img">
+            <div class="placeholder-icon">✦</div>
+            <span>Aura Architecture</span>
+          </div>
+          <div class="test-screenshot-overlay"></div>
         </div>
-    </section>
-
-
-    <!-- CALL TO ACTION SECTION -->
-    <section class="cta-box reveal">
-        <h2>Radical Results.<br>Elegant Foundations.</h2>
-        <a href="mailto:0067678899c@gmail.com?subject=New Vibe Project" class="btn-premium">Start a Project</a>
-    </section>
-    <footer class="site-footer">
-        <div class="footer-left">
-            <img src="image/logs.png" alt="Logo" class="logo-img">
-            <div class="status-indicator">
-                <span class="dot"></span> Available for Q3 2024 Projects
-            </div>
-            <p class="footer-credits">© 2024 Neural Flow Hub. All Rights Reserved.</p>
+        <div class="test-body">
+          <div class="test-quote-mark" aria-hidden="true">"</div>
+          <blockquote>
+            <p class="test-quote">The 'Vibe Coded' approach bridged our Trust Gap immediately. Flawless animations and it loads in the blink of an eye.</p>
+            <footer class="test-attribution">
+              <span class="test-dash">—</span>
+              <cite>
+                <span class="test-name">David</span>
+                <span class="test-role">Founder, Aura Architecture</span>
+              </cite>
+            </footer>
+          </blockquote>
         </div>
-        
-        <div class="footer-right">
-            <ul class="footer-links">
-                <li><a href="https://www.linkedin.com/in/neural-flow-a172b8384">LinkedIn</a></li>
-                <li><a href="mailto:009898@gmail.com">Contact</a></li>
-                <li><a href="#">Privacy</a></li>
-            </ul>
-        </div>
-    </footer>
+      </article>
 
-    <script>
-        // 1. Scroll Reveal Observer
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
-            });
-        }, { threshold: 0.1 });
+    </div>
+  </section>
 
-        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+  <!-- ═══════════════════════════════════════════════════════════
+       SECTION 5 — CLOSING CTA
+  ═══════════════════════════════════════════════════════════ -->
+  <section id="contact" class="cta-section" aria-label="Contact call to action">
+    <div class="cta-bg" aria-hidden="true">
+      <div class="cta-blob-1"></div>
+      <div class="cta-blob-2"></div>
+      <div class="cta-blob-3"></div>
+    </div>
+    <div class="cta-content">
+      <span class="section-label reveal-up">Let's Build Together</span>
+      <h2 class="cta-title reveal-up delay-1">
+        RADICAL RESULTS.<br />
+        <span class="cta-title-accent">ELEGANT FOUNDATIONS.</span>
+      </h2>
+      <p class="cta-sub reveal-up delay-2">Available for new projects — let's build something unforgettable.</p>
+      <div class="cta-actions reveal-up delay-3">
+        <a href="mailto:0067678899c@gmail.com?subject=New%20Vibe%20Project" class="btn-cta" id="cta-start-project">
+          <span class="btn-cta-text">START A PROJECT</span>
+          <span class="btn-cta-arrow">→</span>
+          <span class="btn-cta-glow" aria-hidden="true"></span>
+        </a>
+        <a href="https://www.linkedin.com/in/neural-flow-a172b8384" target="_blank" rel="noopener" class="btn-ghost-cta" id="cta-linkedin">
+          Connect on LinkedIn ↗
+        </a>
+      </div>
+      <div class="cta-email-display reveal-up delay-4">
+        <span class="email-label">Or reach us directly at</span>
+        <a href="mailto:0067678899c@gmail.com" class="email-link">0067678899c@gmail.com</a>
+      </div>
+    </div>
+  </section>
 
-        // 2. Hero Initial Animation
-        window.addEventListener('DOMContentLoaded', () => {
-            const h1 = document.getElementById('h1Reveal');
-            const p = document.getElementById('pReveal');
-            
-            setTimeout(() => {
-                h1.style.opacity = '1';
-                h1.style.transform = 'translateY(0)';
-            }, 300);
-            
-            setTimeout(() => {
-                p.style.opacity = '1';
-                p.style.transform = 'translateY(0)';
-            }, 600);
-        });
+  <!-- ═══════════════════════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════════════════════ -->
+  <footer class="site-footer" role="contentinfo" aria-label="Site footer">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <span class="logo-text" style="font-family: var(--font-display); font-size: 1.5rem; letter-spacing: 2px; color: #fff;">NFH.</span>
+        <span class="footer-brand-name">Neural Flow Hub</span>
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="https://www.linkedin.com/in/neural-flow-a172b8384" target="_blank" rel="noopener" class="footer-link">LinkedIn</a>
+        <span class="footer-sep" aria-hidden="true">·</span>
+        <a href="mailto:0067678899c@gmail.com" class="footer-link">Contact</a>
+        <span class="footer-sep" aria-hidden="true">·</span>
+        <a href="#" class="footer-link">Privacy</a>
+      </nav>
+      <p class="footer-copy">© 2025 Neural Flow Hub. All Rights Reserved.</p>
+    </div>
+  </footer>
 
-        // 3. Smooth Parallax Effect
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const heroBg = document.getElementById('parallaxHero');
-            heroBg.style.transform = `scale(1.1) translateY(${scrolled * 0.4}px)`;
-        });
-    </script>
+
+  <!-- Mobile Menu (body-level so fixed positioning is viewport-relative) -->
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Mobile navigation">
+    <ul role="list">
+      <li><a href="#work" class="mobile-link">Work</a></li>
+      <li><a href="#proof" class="mobile-link">Proof</a></li>
+      <li><a href="#contact" class="mobile-link">Contact</a></li>
+      <li><a href="mailto:0067678899c@gmail.com?subject=New%20Vibe%20Project" class="mobile-link mobile-cta">Start a Project</a></li>
+    </ul>
+  </div>
+
+  <script src="main.js"></script>
 </body>
 </html>
